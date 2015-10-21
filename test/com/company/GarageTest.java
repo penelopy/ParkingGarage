@@ -5,31 +5,46 @@ import org.junit.Test;
 
 import static org.hamcrest.core.IsEqual.equalTo;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class GarageTest {
     @Test
     public void createGarage() {
-        Garage marketGarage = new Garage(12, 4);
+        Garage marketGarage = new Garage();
+        Floor floor3 = new Floor("Floor 3", 4);
+        marketGarage.addFloor(floor3);
 
-        assertThat(marketGarage.numFloors, equalTo(4));
-        assertThat(marketGarage.floorList.size(), equalTo(4));
+        assertThat(marketGarage.numFloors, equalTo(1));
+        assertThat(marketGarage.floorList.size(), equalTo(1));
     }
 
     @Test
     public void isGarageFull() {
-        Garage marketGarage = new Garage(2, 2);
+        Garage marketGarage = new Garage();
 
-        for (int i = 0; i < marketGarage.numFloors; i++) {
-            Floor floor = marketGarage.floorList.get(i);
-            Vehicle honda = new Vehicle("honda", "blue", i);
-        }
-
-        Floor floor1 = new Floor(1);
-        Floor floor2 = new Floor(1);
+        Floor floor1 = new Floor("Floor 1", 1);
+        Floor floor2 = new Floor("Floor 2", 1);
         Vehicle honda = new Vehicle("honda", "blue", 1);
         Vehicle prius = new Vehicle("toyota", "green", 1);
+        floor1.addCar(honda);
+        floor2.addCar(prius);
 
         marketGarage.floorList.add(floor1);
         marketGarage.floorList.add(floor2);
+        assertTrue(marketGarage.isFull());
+
     }
+
+    @Test(expected = IllegalStateException.class)
+    public void addSameFloorObjectThrowsException() {
+        Garage marketGarage = new Garage();
+        Floor floor1 = new Floor("Floor 1", 1);
+        marketGarage.addFloor(floor1);
+        marketGarage.addFloor(floor1);
+    }
+
+//    @Test(expected = IllegalStateException.class)
+
+
+
 }

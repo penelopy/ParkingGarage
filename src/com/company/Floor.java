@@ -3,10 +3,14 @@ package com.company;
 public class Floor {
     int totalParkingSpaces;
     int numAvailableSpaces;
+    String name;
 
-    public Floor(int totalParkingSpaces) {
+    public Floor(String name, int totalParkingSpaces) {
         this.totalParkingSpaces = totalParkingSpaces;
         this.numAvailableSpaces = totalParkingSpaces;
+        this.name = name;
+
+        if ()
     }
 
     public boolean isFull() {

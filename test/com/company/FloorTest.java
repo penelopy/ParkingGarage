@@ -9,7 +9,7 @@ import static org.junit.Assert.assertThat;
 public class FloorTest {
     @Test(expected = IllegalStateException.class)
     public void addingCarToFullFloorThrowsException() {
-        Floor floor2 = new Floor(3);
+        Floor floor2 = new Floor("Floor 2", 3);
         Vehicle honda = new Vehicle("honda", "blue", 1);
         Vehicle prius = new Vehicle("toyota", "green", 1);
         Vehicle miniVan = new Vehicle("ford", "red", 2);
@@ -21,7 +21,7 @@ public class FloorTest {
 
     @Test
     public void removingCarFromFloorCorrect() {
-        Floor floor2 = new Floor(3);
+        Floor floor2 = new Floor("Floor 2", 3);
         Vehicle honda = new Vehicle("honda", "blue", 1);
         Vehicle prius = new Vehicle("toyota", "green", 1);
 
@@ -34,7 +34,7 @@ public class FloorTest {
 
     @Test
     public void addCarToFloorReturnsCorrectValue() {
-        Floor floor2 = new Floor(3);
+        Floor floor2 = new Floor("Floor 2", 3);
         Vehicle honda = new Vehicle("honda", "blue", 1);
         Vehicle prius = new Vehicle("toyota", "green", 1);
 
