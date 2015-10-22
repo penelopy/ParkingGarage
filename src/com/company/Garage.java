@@ -5,40 +5,42 @@ import java.util.List;
 
 public class Garage {
 
-    int numFloors = 0;
-
-    public List<Floor> floorList = new ArrayList<Floor>();
+    private List<Floor> floorList = new ArrayList<Floor>();
 
     public Garage(){
         }
-
 
     /**
      * Returns true if garage is full.
      */
     public boolean isFull() {
-        for (int i = 0; i < floorList.size(); i++) {
-            if (!floorList.get(i).isFull()) {
+        for (Floor floor:floorList) {
+            if (!floor.isFull()) {
                 return false;
             }
         } return true;
     }
 
-    public void addFloor(Floor floorName) {
-        
-        boolean uniqueFloor = true;
-        for (int i = 0; i < numFloors; i++) {
-            if (floorList.get(i).name == floorName.name) {
-                uniqueFloor = false;
-            }
-        }
-
-        if (uniqueFloor) {
-            floorList.add(floorName);
-            numFloors++;
-        } else {
+    public void addFloor(Floor afloor) {
+        if (isFloorNameUsed(afloor)) {
             throw new IllegalStateException();
         }
+        else  {
+            floorList.add(afloor);
+        }
+    }
+
+    public int numFloorsinGarage(){
+        return floorList.size();
+    }
+
+    public boolean isFloorNameUsed(Floor newFloor) {
+        for (Floor floor:floorList) {
+            if (newFloor.name == floor.name) {
+                return true;
+            }
+        }
+        return false;
     }
 
 

@@ -1,16 +1,20 @@
 package com.company;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Floor {
     int totalParkingSpaces;
     int numAvailableSpaces;
-    String name;
+    final String name;
+
+    private List<Vehicle> vehicleList = new ArrayList<Vehicle>();
 
     public Floor(String name, int totalParkingSpaces) {
         this.totalParkingSpaces = totalParkingSpaces;
-        this.numAvailableSpaces = totalParkingSpaces;
+        this.numAvailableSpaces = totalParkingSpaces; //vehicles can take up 1+ spaces
         this.name = name;
 
-        if ()
     }
 
     public boolean isFull() {

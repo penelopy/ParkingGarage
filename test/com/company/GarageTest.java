@@ -14,8 +14,7 @@ public class GarageTest {
         Floor floor3 = new Floor("Floor 3", 4);
         marketGarage.addFloor(floor3);
 
-        assertThat(marketGarage.numFloors, equalTo(1));
-        assertThat(marketGarage.floorList.size(), equalTo(1));
+        assertThat(marketGarage.numFloorsinGarage(), equalTo(1));
     }
 
     @Test
@@ -29,8 +28,8 @@ public class GarageTest {
         floor1.addCar(honda);
         floor2.addCar(prius);
 
-        marketGarage.floorList.add(floor1);
-        marketGarage.floorList.add(floor2);
+        marketGarage.addFloor(floor1);
+        marketGarage.addFloor(floor2);
         assertTrue(marketGarage.isFull());
 
     }
